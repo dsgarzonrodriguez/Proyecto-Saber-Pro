@@ -5,33 +5,40 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.mycompany</groupId>
-    <artifactId>saberPro</artifactId>
+    <groupId>com.saberpro</groupId>
+    <artifactId>saberpro</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>17</maven.compiler.release>
-        <exec.mainClass>com.mycompany.saberpro.SaberPro</exec.mainClass>
+        <javafx.version>21</javafx.version>
+        <exec.mainClass>com.saberpro.App</exec.mainClass>
     </properties>
 
     <dependencies>
-        <!-- POSTGRES -->
+
+        <!-- ==================== JAVAFX ==================== -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+
+        <!-- ==================== BASE DE DATOS ==================== -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.7.8</version>
         </dependency>
 
-        <!-- AbsoluteLayout NetBeans -->
-        <dependency>
-            <groupId>org.netbeans.external</groupId>
-            <artifactId>AbsoluteLayout</artifactId>
-            <version>RELEASE270</version>
-        </dependency>
-
-        <!-- CORREO -->
+        <!-- ==================== CORREO ==================== -->
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>jakarta.mail</artifactId>
@@ -43,28 +50,25 @@
             <version>2.1.3</version>
         </dependency>
 
-        <!-- JCalendar -->
-        <dependency>
-            <groupId>com.toedter</groupId>
-            <artifactId>jcalendar</artifactId>
-            <version>1.4</version>
-        </dependency>
-
-        <!-- JFreeChart -->
+        <!-- ==================== GRÁFICAS ==================== -->
+        <!--
+            JFreeChart se mantiene. Funciona dentro de JavaFX
+            envolviéndolo en un SwingNode. Si en el futuro quieres
+            gráficas nativas JavaFX, puedes reemplazarlo por
+            javafx-controls (Charts ya incluidos) y eliminar esta dep.
+        -->
         <dependency>
             <groupId>org.jfree</groupId>
             <artifactId>jfreechart</artifactId>
             <version>1.5.5</version>
         </dependency>
 
-        <!-- iText PDF -->
+        <!-- ==================== EXPORTACIÓN ==================== -->
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>itextpdf</artifactId>
             <version>5.5.13.4</version>
         </dependency>
-
-        <!-- Apache POI -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
@@ -76,24 +80,20 @@
             <version>5.4.1</version>
         </dependency>
 
-        <!-- JSON -->
+        <!-- ==================== JSON (Gemini API) ==================== -->
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20210307</version>
         </dependency>
 
-        <!-- ================== TEST ================== -->
-
-        <!-- JUnit 4 (LO ÚNICO QUE VAS A USAR) -->
+        <!-- ==================== TEST ==================== -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- Mockito -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
@@ -105,6 +105,28 @@
 
     <build>
         <plugins>
+
+            <!-- Compilador -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <release>17</release>
+                </configuration>
+            </plugin>
+
+            <!-- JavaFX: mvn javafx:run -->
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.8</version>
+                <configuration>
+                    <mainClass>com.saberpro.App</mainClass>
+                </configuration>
+            </plugin>
+
+            <!-- Tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -119,6 +141,29 @@
                     </argLine>
                 </configuration>
             </plugin>
+
+            <!-- JAR ejecutable con todas las dependencias -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.5.3</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>com.saberpro.App</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 
