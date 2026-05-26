@@ -1,4 +1,4 @@
-package saberPro.infrastructure.gateways;
+package saberPro.usecases.ports;
 
 import saberPro.entities.Usuario;
 import java.sql.SQLException;
@@ -19,4 +19,8 @@ public interface UsuarioRepository {
     boolean buscar(Usuario usuario) throws SQLException;
 
     List<Usuario> consultarUsuarios(String texto, String rol, String estado, String inicio, String fin) throws SQLException;
+
+    boolean verificarCorreoExiste(String correo) throws SQLException;
+
+    boolean cambiarContrasena(String correo, String nuevaContrasena) throws SQLException;
 }

@@ -1,8 +1,8 @@
 package saberPro.infrastructure.persistence.repositories;
 
-import saberPro.infrastructure.gateways.RolesRepository;
 import saberPro.entities.Roles;
 import saberPro.infrastructure.config.PostgresConexion;
+import saberPro.usecases.ports.RolesRepository;
 
 import java.sql.*;
 import java.util.ArrayList;

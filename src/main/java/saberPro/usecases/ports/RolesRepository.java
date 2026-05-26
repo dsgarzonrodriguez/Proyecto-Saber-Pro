@@ -1,4 +1,4 @@
-package saberPro.infrastructure.gateways;
+package saberPro.usecases.ports;
 
 import saberPro.entities.Roles;
 

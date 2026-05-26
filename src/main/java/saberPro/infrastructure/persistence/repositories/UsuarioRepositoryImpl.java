@@ -1,9 +1,9 @@
 package saberPro.infrastructure.persistence.repositories;
 
-import saberPro.infrastructure.gateways.UsuarioRepository;
 import saberPro.entities.Roles;
 import saberPro.entities.Usuario;
 import saberPro.infrastructure.config.PostgresConexion;
+import saberPro.usecases.ports.UsuarioRepository;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -215,7 +215,6 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
             Roles rol = new Roles(rs.getInt("id_roles"), rs.getString("nombre_rol"));
             usr.setRol(rol);
 
-            // Buscar datos personales según el rol
             String tablaRol = resolverTablaRol(rol.getNombre());
             try (PreparedStatement ps2 = con.prepareStatement(
                     "SELECT nombre, apellido, telefono, cc FROM " + tablaRol +
@@ -281,19 +280,46 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
         return lista;
     }
 
+    @Override
+    public boolean verificarCorreoExiste(String correo) throws SQLException {
+        String sql = "SELECT habilitado FROM usuario WHERE correo = ?";
+        try (Connection con = conexion.getConexion();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, correo);
+            ResultSet rs = ps.executeQuery();
+            if (!rs.next()) return false;
+            if (!rs.getBoolean("habilitado"))
+                throw new IllegalStateException(
+                        "La cuenta asociada a este correo está deshabilitada. " +
+                        "Por favor contacte al administrador del sistema.");
+            return true;
+        }
+    }
+
+    @Override
+    public boolean cambiarContrasena(String correo, String nuevaContrasena) throws SQLException {
+        String sql = "UPDATE usuario SET contrasena = ? WHERE correo = ?";
+        try (Connection con = conexion.getConexion();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, nuevaContrasena);
+            ps.setString(2, correo);
+            return ps.executeUpdate() > 0;
+        }
+    }
+
     private String resolverTablaRol(String nombreRol) throws SQLException {
         String normalizado = nombreRol.toLowerCase()
             .replace("á","a").replace("é","e")
             .replace("í","i").replace("ó","o").replace("ú","u");
         return switch (normalizado) {
-            case "administrador"           -> "administrador";
-            case "estudiante"              -> "estudiante";
-            case "egresado"                -> "estudiante";
-            case "profesor"                -> "profesor";
-            case "decano"                  -> "decano";
-            case "comite de programa"      -> "comite_programa";
-            case "director de programa"    -> "director_programa";
-            case "coordinador saber pro"   -> "coordinador_saberpro";
+            case "administrador"              -> "administrador";
+            case "estudiante"                 -> "estudiante";
+            case "egresado"                   -> "estudiante";
+            case "profesor"                   -> "profesor";
+            case "decano"                     -> "decano";
+            case "comite de programa"         -> "comite_programa";
+            case "director de programa"       -> "director_programa";
+            case "coordinador saber pro"      -> "coordinador_saberpro";
             case "secretaria de acreditacion" -> "secretaria_acreditacion";
             default -> throw new SQLException("Rol no reconocido: " + nombreRol);
         };
