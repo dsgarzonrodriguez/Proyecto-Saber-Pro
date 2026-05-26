@@ -61,7 +61,7 @@ public class GenerarInformeIAUseCase {
 
         String descAnio      = filtros.getAnio()      != null ? "Año " + filtros.getAnio()           : "todos los años";
         String descSemestre  = filtros.getSemestre()  != null ? "semestre " + filtros.getSemestre()  : "todos los semestres";
-        String descPrograma  = filtros.getIdPrograma() != null ? "programa ID " + filtros.getIdPrograma() : "todos los programas";
+        String descPrograma  = filtros.getPrograma() != null ? "programa ID " + filtros.getPrograma() : "todos los programas";
         String descCiudad    = filtros.getIdModulo()  != null ? "módulo ID " + filtros.getIdModulo() : "todas las ciudades";
 
         StringBuilder ctx = new StringBuilder();

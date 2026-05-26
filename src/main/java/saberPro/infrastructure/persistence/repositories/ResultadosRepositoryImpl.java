@@ -25,10 +25,20 @@ public class ResultadosRepositoryImpl implements ResultadosRepository {
         List<Object> params = new ArrayList<>();
 
         if (filtros.getAnio() != null) {
-            sql.append("AND ano=? "); params.add(filtros.getAnio());
+            sql.append("AND ano=? ");
+            params.add(filtros.getAnio());
         }
         if (filtros.getSemestre() != null) {
-            sql.append("AND semestre=? "); params.add(filtros.getSemestre());
+            sql.append("AND semestre=? ");
+            params.add(filtros.getSemestre());
+        }
+        if (filtros.getPrograma() != null && !filtros.getPrograma().trim().isEmpty()) {
+            sql.append("AND programa=? ");
+            params.add(filtros.getPrograma());
+        }
+        if (filtros.getCiudad() != null && !filtros.getCiudad().trim().isEmpty()) {
+            sql.append("AND ciudad=? ");
+            params.add(filtros.getCiudad());
         }
 
         sql.append("ORDER BY apellido, nombre");

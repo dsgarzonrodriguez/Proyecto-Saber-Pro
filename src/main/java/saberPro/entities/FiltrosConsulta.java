@@ -1,51 +1,21 @@
-
 package saberPro.entities;
 
-
 public class FiltrosConsulta {
-    public Integer anio;
-    public Integer semestre;
-    public Integer idPrograma;
-    public Integer idModulo;
 
-    public Integer getAnio() {
-        return anio;
-    }
+    private Integer anio;
+    private Integer semestre;
+    private String programa;
+    private String ciudad;
 
-    public void setAnio(Integer anio) {
-        this.anio = anio;
-    }
+    public Integer getAnio() { return anio; }
+    public void setAnio(Integer anio) { this.anio = anio; }
 
-    public Integer getSemestre() {
-        return semestre;
-    }
+    public Integer getSemestre() { return semestre; }
+    public void setSemestre(Integer semestre) { this.semestre = semestre; }
 
-    public void setSemestre(Integer semestre) {
-        this.semestre = semestre;
-    }
+    public String getPrograma() { return programa; }
+    public void setPrograma(String programa) { this.programa = programa; }
 
-    public Integer getIdPrograma() {
-        return idPrograma;
-    }
-
-    public void setIdPrograma(Integer idPrograma) {
-        this.idPrograma = idPrograma;
-    }
-
-    public Integer getIdModulo() {
-        return idModulo;
-    }
-
-    public void setIdModulo(Integer idModulo) {
-        this.idModulo = idModulo;
-    }
-
-    public Integer getIdEstudiante() {
-        return idEstudiante;
-    }
-
-    public void setIdEstudiante(Integer idEstudiante) {
-        this.idEstudiante = idEstudiante;
-    }
-    public Integer idEstudiante;
+    public String getCiudad() { return ciudad; }
+    public void setCiudad(String ciudad) { this.ciudad = ciudad; }
 }

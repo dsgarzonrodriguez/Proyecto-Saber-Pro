@@ -29,13 +29,13 @@ public class InformePortImpl implements InformePort {
             where.append("AND semestre=? ");
             params.add(filtros.getSemestre());
         }
-        if (filtros.getIdPrograma() != null) {
+        if (filtros.getPrograma() != null && !filtros.getPrograma().trim().isEmpty()) {
             where.append("AND programa=? ");
-            params.add(filtros.getIdPrograma());
+            params.add(filtros.getPrograma());
         }
-        if (filtros.getIdModulo() != null) {
+        if (filtros.getCiudad() != null && !filtros.getCiudad().trim().isEmpty()) {
             where.append("AND ciudad=? ");
-            params.add(filtros.getIdModulo());
+            params.add(filtros.getCiudad());
         }
 
         String sql =
@@ -84,13 +84,13 @@ public class InformePortImpl implements InformePort {
             where.append("AND semestre=? ");
             params.add(filtros.getSemestre());
         }
-        if (filtros.getIdPrograma() != null) {
+        if (filtros.getPrograma() != null && !filtros.getPrograma().trim().isEmpty()) {
             where.append("AND programa=? ");
-            params.add(filtros.getIdPrograma());
+            params.add(filtros.getPrograma());
         }
-        if (filtros.getIdModulo() != null) {
+        if (filtros.getCiudad() != null && !filtros.getCiudad().trim().isEmpty()) {
             where.append("AND ciudad=? ");
-            params.add(filtros.getIdModulo());
+            params.add(filtros.getCiudad());
         }
 
         String sql =
