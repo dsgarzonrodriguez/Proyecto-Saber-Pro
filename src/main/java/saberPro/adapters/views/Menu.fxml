@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="saberPro.adapters.controllers.MenuController"
+            prefWidth="1000" prefHeight="650"
+            style="-fx-background-color: #3F8EDD;">
+
+    <!-- ══════════════════════════════════════════════════════════
+         BARRA DE MENÚ
+    ══════════════════════════════════════════════════════════════ -->
+    <top>
+        <MenuBar style="-fx-background-color: #1a1a2e; -fx-padding: 4 0 4 0;">
+
+            <!-- ─ USUARIO ─────────────────────────────────────── -->
+            <Menu text="👤  Usuario"
+                  style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: white;">
+
+                <MenuItem fx:id="menuGestionCuenta"
+                          text="Gestionar cuenta"
+                          onAction="#onGestionCuenta"/>
+
+                <MenuItem fx:id="menuGestionUsuario"
+                          text="Gestionar usuarios"
+                          onAction="#onGestionUsuario"/>
+
+                <MenuItem fx:id="menuGestionRoles"
+                          text="Gestionar roles"
+                          onAction="#onGestionRoles"/>
+
+                <MenuItem fx:id="menuCargarUsuarios"
+                          text="Carga de usuarios"
+                          onAction="#onCargarUsuarios"/>
+            </Menu>
+
+            <!-- ─ RESULTADOS ──────────────────────────────────── -->
+            <Menu text="📊  Resultados"
+                  style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: white;">
+
+                <MenuItem fx:id="menuResultadoPersonal"
+                          text="Resultado personal"
+                          onAction="#onResultadoPersonal"/>
+
+                <MenuItem fx:id="menuResultadoGeneral"
+                          text="Resultado general"
+                          onAction="#onResultadoGeneral"/>
+
+                <MenuItem fx:id="menuCargarResultados"
+                          text="Cargar resultados"
+                          onAction="#onCargarResultados"/>
+            </Menu>
+
+            <!-- ─ INFORMES ────────────────────────────────────── -->
+            <Menu fx:id="menuInformes"
+                  text="📄  Informes"
+                  style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: white;">
+
+                <MenuItem fx:id="menuGenerarInforme"
+                          text="Generar informe con IA"
+                          onAction="#onGenerarInforme"/>
+
+                <MenuItem fx:id="menuGestionInformes"
+                          text="Gestionar informes"
+                          onAction="#onGestionInformes"/>
+            </Menu>
+
+            <!-- ─ PLAN DE ACCIÓN ──────────────────────────────── -->
+            <Menu fx:id="menuPlanAccion"
+                  text="📋  Plan de Acción"
+                  style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: white;">
+
+                <MenuItem fx:id="menuConsultarPlan"
+                          text="Consultar plan de acción"
+                          onAction="#onConsultarPlan"/>
+            </Menu>
+
+            <!-- ─ EVALUACIÓN ──────────────────────────────────── -->
+            <Menu fx:id="menuEvaluacion"
+                  text="📝  Evaluación"
+                  style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: white;">
+
+                <MenuItem text="Gestionar evaluación y seguimiento"
+                          onAction="#onEvaluacion"/>
+
+                <MenuItem text="Consultar evaluación y seguimiento"
+                          onAction="#onEvaluacion"/>
+            </Menu>
+
+            <!-- ─ CERRAR SESIÓN ───────────────────────────────── -->
+            <Menu text="🚪  Cerrar Sesión"
+                  style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: white;">
+
+                <MenuItem text="Cerrar sesión"
+                          onAction="#onCerrarSesion"/>
+            </Menu>
+
+        </MenuBar>
+    </top>
+
+    <!-- ══════════════════════════════════════════════════════════
+         CONTENIDO CENTRAL
+    ══════════════════════════════════════════════════════════════ -->
+    <center>
+        <StackPane fx:id="contenidoCentral"
+                style="-fx-background-color: #3F8EDD;">
+          <VBox alignment="CENTER" spacing="20">
+              <Label text="SABER PRO"
+                    style="-fx-font-size: 80px; -fx-font-weight: bold;
+                            -fx-text-fill: white; -fx-font-family: 'Tahoma';"/>
+              <Label text="Universidad de los Llanos"
+                    style="-fx-font-size: 22px; -fx-text-fill: #dce9f9;
+                            -fx-font-family: 'Tahoma';"/>
+          </VBox>
+        </StackPane>
+    </center>
+
+    <!-- ══════════════════════════════════════════════════════════
+         BARRA INFERIOR  (bienvenida + rol)
+    ══════════════════════════════════════════════════════════════ -->
+    <bottom>
+        <Label fx:id="lblBienvenida"
+               style="-fx-background-color: #1a1a2e;
+                      -fx-text-fill: #a0c4ff;
+                      -fx-font-size: 13px;
+                      -fx-padding: 6 16 6 16;
+                      -fx-font-family: 'Tahoma';"
+               maxWidth="Infinity"
+               BorderPane.alignment="CENTER_LEFT"/>
+    </bottom>
+
+</BorderPane>

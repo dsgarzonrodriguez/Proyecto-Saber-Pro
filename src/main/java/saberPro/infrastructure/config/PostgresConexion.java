@@ -10,7 +10,7 @@ public class PostgresConexion {
     private static final String PUERTO   = "5432";
     private static final String DB       = "software2";
     private static final String USER     = "postgres";
-    private static final String PASSWORD = "5112";
+    private static final String PASSWORD = "waos123";
 
     private static final String URL =
             "jdbc:postgresql://" + HOST + ":" + PUERTO + "/" + DB;

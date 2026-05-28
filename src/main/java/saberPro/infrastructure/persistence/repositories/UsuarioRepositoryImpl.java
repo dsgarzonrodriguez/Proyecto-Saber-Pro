@@ -15,24 +15,22 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     @Override
     public boolean login(Usuario u) throws SQLException {
-        String sql = "SELECT id_usuario, correo, contrasena, id_roles, habilitado " +
-                     "FROM usuario WHERE correo = ? AND contrasena = ?";
-
+        String sql = "SELECT u.id_usuario, u.correo, u.contrasena, u.id_roles, u.habilitado, r.nombre " +
+                    "FROM usuario u JOIN roles r ON u.id_roles = r.id_roles " +
+                    "WHERE u.correo = ? AND u.contrasena = ?";
         try (Connection con = conexion.getConexion();
-             PreparedStatement ps = con.prepareStatement(sql)) {
-
+            PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, u.getCorreo());
             ps.setString(2, u.getContrasena());
             ResultSet rs = ps.executeQuery();
-
             if (rs.next()) {
                 u.setId_usuario(rs.getInt("id_usuario"));
                 u.setCorreo(rs.getString("correo"));
                 u.setContrasena(rs.getString("contrasena"));
                 u.setHabilitado(rs.getBoolean("habilitado"));
-
                 Roles rol = new Roles();
                 rol.setId_roles(rs.getInt("id_roles"));
+                rol.setNombre(rs.getString("nombre")); // <-- esto faltaba
                 u.setRol(rol);
                 return true;
             }

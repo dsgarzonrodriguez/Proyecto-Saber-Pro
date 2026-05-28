@@ -2,6 +2,8 @@ package saberPro.usecases.ports;
 
 import saberPro.entities.FiltrosConsulta;
 import saberPro.entities.ResultadoSaberPro;
+
+import java.sql.SQLException;
 import java.util.List;
 
 public interface ResultadosRepository {
