@@ -6,11 +6,11 @@ import java.sql.SQLException;
 
 public class PostgresConexion {
 
-    private static final String HOST     = "localhost";
+    private static final String HOST     = "aws-1-us-east-2.pooler.supabase.com";
     private static final String PUERTO   = "5432";
-    private static final String DB       = "software2";
-    private static final String USER     = "postgres";
-    private static final String PASSWORD = "waos123";
+    private static final String DB       = "postgres";
+    private static final String USER     = "postgres.wdqxwjswsbfhgkoujyjt";
+    private static final String PASSWORD = "saberpro2026";
 
     private static final String URL =
             "jdbc:postgresql://" + HOST + ":" + PUERTO + "/" + DB;
