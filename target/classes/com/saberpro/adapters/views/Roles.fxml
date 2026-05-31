@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.saberpro.adapters.controllers.RolController"
+            style="-fx-background-color: #f4f6fb;">
+
+    <!-- ENCABEZADO -->
+    <top>
+        <HBox style="-fx-background-color: #1a2a6c; -fx-padding: 16 24;">
+            <Label text="Gestión de Roles"
+                   style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <!-- CONTENIDO -->
+    <center>
+        <VBox spacing="16" style="-fx-padding: 24;">
+
+            <!-- Formulario -->
+            <HBox spacing="12" alignment="CENTER_LEFT"
+                  style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, #c0c8e0, 6, 0, 0, 2);">
+
+                <VBox spacing="4">
+                    <Label text="ID" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                    <TextField fx:id="txtId" promptText="Auto" editable="false" prefWidth="70"
+                               style="-fx-pref-height: 34px; -fx-border-color: #ddd; -fx-border-radius: 5; -fx-background-radius: 5; -fx-background-color: #f0f0f0;"/>
+                </VBox>
+
+                <VBox spacing="4" HBox.hgrow="ALWAYS">
+                    <Label text="Nombre del Rol" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                    <TextField fx:id="txtNombre" promptText="Ej: Coordinador"
+                               style="-fx-pref-height: 34px; -fx-border-color: #c0c8e0; -fx-border-radius: 5; -fx-background-radius: 5;"/>
+                </VBox>
+
+                <VBox spacing="4" alignment="BOTTOM_LEFT">
+                    <Label text=" "/>
+                    <HBox spacing="8">
+                        <Button text="Buscar"   onAction="#onBuscar"
+                                style="-fx-background-color: #1a2a6c; -fx-text-fill: white; -fx-pref-height: 34px; -fx-pref-width: 90px; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                        <Button text="Registrar" onAction="#onRegistrar"
+                                style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-pref-height: 34px; -fx-pref-width: 90px; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                        <Button text="Editar"   onAction="#onEditar"
+                                style="-fx-background-color: #fd7e14; -fx-text-fill: white; -fx-pref-height: 34px; -fx-pref-width: 90px; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                        <Button text="Eliminar" onAction="#onEliminar"
+                                style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-pref-height: 34px; -fx-pref-width: 90px; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                        <Button text="Limpiar"  onAction="#onLimpiar"
+                                style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-pref-height: 34px; -fx-pref-width: 90px; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                    </HBox>
+                </VBox>
+            </HBox>
+
+            <!-- Tabla -->
+            <TableView fx:id="tablaRoles" VBox.vgrow="ALWAYS"
+                       onMouseClicked="#onSeleccionarFila"
+                       style="-fx-background-color: white; -fx-background-radius: 10;">
+                <columns>
+                    <TableColumn fx:id="colId"     text="ID"     prefWidth="80"/>
+                    <TableColumn fx:id="colNombre"  text="Nombre" prefWidth="300"/>
+                </columns>
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                </columnResizePolicy>
+            </TableView>
+
+        </VBox>
+    </center>
+</BorderPane>

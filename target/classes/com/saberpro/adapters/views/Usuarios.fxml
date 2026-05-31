@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.saberpro.adapters.controllers.UsuarioController"
+            style="-fx-background-color: #f4f6fb;">
+
+    <!-- ENCABEZADO -->
+    <top>
+        <HBox style="-fx-background-color: #1a2a6c; -fx-padding: 16 24;">
+            <Label text="Gestión de Usuarios"
+                   style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="16" style="-fx-padding: 24;">
+
+            <!-- Formulario -->
+            <VBox spacing="12"
+                  style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, #c0c8e0, 6, 0, 0, 2);">
+
+                <!-- Fila 1 -->
+                <HBox spacing="12">
+                    <VBox spacing="4" prefWidth="80">
+                        <Label text="ID" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                        <TextField fx:id="txtId" editable="false" promptText="Auto"
+                                   style="-fx-pref-height: 34px; -fx-border-color: #ddd; -fx-border-radius: 5; -fx-background-radius: 5; -fx-background-color: #f0f0f0;"/>
+                    </VBox>
+                    <VBox spacing="4" HBox.hgrow="ALWAYS">
+                        <Label text="Nombre" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                        <TextField fx:id="txtNombre" promptText="Nombre"
+                                   style="-fx-pref-height: 34px; -fx-border-color: #c0c8e0; -fx-border-radius: 5; -fx-background-radius: 5;"/>
+                    </VBox>
+                    <VBox spacing="4" HBox.hgrow="ALWAYS">
+                        <Label text="Apellido" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                        <TextField fx:id="txtApellido" promptText="Apellido"
+                                   style="-fx-pref-height: 34px; -fx-border-color: #c0c8e0; -fx-border-radius: 5; -fx-background-radius: 5;"/>
+                    </VBox>
+                    <VBox spacing="4" HBox.hgrow="ALWAYS">
+                        <Label text="Cédula (CC)" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                        <TextField fx:id="txtCC" promptText="Número de cédula"
+                                   style="-fx-pref-height: 34px; -fx-border-color: #c0c8e0; -fx-border-radius: 5; -fx-background-radius: 5;"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Fila 2 -->
+                <HBox spacing="12">
+                    <VBox spacing="4" HBox.hgrow="ALWAYS">
+                        <Label text="Correo" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                        <TextField fx:id="txtCorreo" promptText="correo@unillanos.edu.co"
+                                   style="-fx-pref-height: 34px; -fx-border-color: #c0c8e0; -fx-border-radius: 5; -fx-background-radius: 5;"/>
+                    </VBox>
+                    <VBox spacing="4" HBox.hgrow="ALWAYS">
+                        <Label text="Teléfono" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                        <TextField fx:id="txtTelefono" promptText="3XX XXX XXXX"
+                                   style="-fx-pref-height: 34px; -fx-border-color: #c0c8e0; -fx-border-radius: 5; -fx-background-radius: 5;"/>
+                    </VBox>
+                    <VBox spacing="4" HBox.hgrow="ALWAYS">
+                        <Label text="Contraseña" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                        <PasswordField fx:id="txtContrasena" promptText="••••••••"
+                                       style="-fx-pref-height: 34px; -fx-border-color: #c0c8e0; -fx-border-radius: 5; -fx-background-radius: 5;"/>
+                    </VBox>
+                    <VBox spacing="4" prefWidth="160">
+                        <Label text="Rol" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                        <ComboBox fx:id="cbxRol" maxWidth="Infinity"
+                                  style="-fx-pref-height: 34px;"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Botones -->
+                <HBox spacing="8">
+                    <Button text="Buscar"      onAction="#onBuscar"
+                            style="-fx-background-color: #1a2a6c; -fx-text-fill: white; -fx-pref-height: 34px; -fx-pref-width: 100px; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                    <Button text="Registrar"   onAction="#onRegistrar"
+                            style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-pref-height: 34px; -fx-pref-width: 100px; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                    <Button text="Modificar"   onAction="#onModificar"
+                            style="-fx-background-color: #fd7e14; -fx-text-fill: white; -fx-pref-height: 34px; -fx-pref-width: 100px; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                    <Button fx:id="btnActivar" text="Habilitar" onAction="#onHabilitar"
+                            style="-fx-background-color: #17a2b8; -fx-text-fill: white; -fx-pref-height: 34px; -fx-pref-width: 100px; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                    <Button fx:id="btnEliminar" text="Inhabilitar" onAction="#onInhabilitar"
+                            style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-pref-height: 34px; -fx-pref-width: 100px; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                    <Button text="Limpiar"     onAction="#onLimpiar"
+                            style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-pref-height: 34px; -fx-pref-width: 100px; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                </HBox>
+            </VBox>
+
+            <!-- Tabla de usuarios (se llena al buscar) -->
+            <TableView VBox.vgrow="ALWAYS"
+                       style="-fx-background-color: white; -fx-background-radius: 10;">
+                <columns>
+                    <TableColumn text="ID"         prefWidth="60"/>
+                    <TableColumn text="Nombre"     prefWidth="130"/>
+                    <TableColumn text="Apellido"   prefWidth="130"/>
+                    <TableColumn text="CC"         prefWidth="110"/>
+                    <TableColumn text="Correo"     prefWidth="200"/>
+                    <TableColumn text="Teléfono"   prefWidth="110"/>
+                    <TableColumn text="Rol"        prefWidth="120"/>
+                    <TableColumn text="Estado"     prefWidth="80"/>
+                </columns>
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                </columnResizePolicy>
+            </TableView>
+
+        </VBox>
+    </center>
+</BorderPane>

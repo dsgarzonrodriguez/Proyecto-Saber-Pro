@@ -10,7 +10,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/saberPro/adapters/views/Login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/com/saberpro/adapters/views/Login.fxml"));
         primaryStage.setTitle("SABER PRO - Universidad de los Llanos");
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);

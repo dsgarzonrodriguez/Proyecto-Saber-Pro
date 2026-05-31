@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.saberpro.adapters.controllers.VerificarController"
+      alignment="CENTER"
+      spacing="0"
+      style="-fx-background-color: #1a2a6c;">
+
+    <VBox alignment="CENTER" style="-fx-background-color: #1a2a6c;">
+        <padding><Insets top="50" bottom="20"/></padding>
+        <Label text="Verificar Código"
+               style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;"/>
+        <Label text="Ingresa el código recibido y tu nueva contraseña"
+               style="-fx-text-fill: #aec6f0; -fx-font-size: 13px;"/>
+    </VBox>
+
+    <VBox alignment="CENTER" spacing="16"
+          style="-fx-background-color: white; -fx-background-radius: 16 16 0 0; -fx-padding: 40 50 40 50;">
+
+        <VBox spacing="6">
+            <Label text="Código de verificación"
+                   style="-fx-font-size: 12px; -fx-text-fill: #555;"/>
+            <TextField fx:id="txtCodigo" promptText="Ej: 483920"
+                       style="-fx-pref-height: 38px; -fx-border-color: #c0c8e0; -fx-border-radius: 6; -fx-background-radius: 6; -fx-font-size: 13px;"/>
+        </VBox>
+
+        <VBox spacing="6">
+            <Label text="Nueva contraseña"
+                   style="-fx-font-size: 12px; -fx-text-fill: #555;"/>
+            <PasswordField fx:id="txtNuevaContrasena" promptText="••••••••"
+                           style="-fx-pref-height: 38px; -fx-border-color: #c0c8e0; -fx-border-radius: 6; -fx-background-radius: 6; -fx-font-size: 13px;"/>
+        </VBox>
+
+        <VBox spacing="6">
+            <Label text="Repetir contraseña"
+                   style="-fx-font-size: 12px; -fx-text-fill: #555;"/>
+            <PasswordField fx:id="txtRepetirContrasena" promptText="••••••••"
+                           style="-fx-pref-height: 38px; -fx-border-color: #c0c8e0; -fx-border-radius: 6; -fx-background-radius: 6; -fx-font-size: 13px;"/>
+        </VBox>
+
+        <Button text="CAMBIAR CONTRASEÑA" onAction="#onVerificarYCambiar"
+                maxWidth="Infinity"
+                style="-fx-background-color: #1a2a6c; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-pref-height: 42px; -fx-background-radius: 8; -fx-cursor: hand;"/>
+
+    </VBox>
+</VBox>

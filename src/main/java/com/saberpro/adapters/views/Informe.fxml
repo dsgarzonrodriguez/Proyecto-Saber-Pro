@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.saberpro.adapters.controllers.InformeController"
+            style="-fx-background-color: #f4f6fb;">
+
+    <top>
+        <HBox style="-fx-background-color: #1a2a6c; -fx-padding: 16 24;" alignment="CENTER_LEFT" spacing="12">
+            <Label text="Generar Informe con IA"
+                   style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <ProgressIndicator fx:id="progressIndicator" visible="false" prefWidth="24" prefHeight="24"
+                               style="-fx-progress-color: white;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="16" style="-fx-padding: 24;">
+
+            <!-- Filtros -->
+            <HBox spacing="12" alignment="CENTER_LEFT"
+                  style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, #c0c8e0, 6, 0, 0, 2);">
+
+                <VBox spacing="4" prefWidth="110">
+                    <Label text="Año" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                    <ComboBox fx:id="cbxAnio" maxWidth="Infinity"
+                              style="-fx-pref-height: 34px;"/>
+                </VBox>
+
+                <VBox spacing="4" prefWidth="120">
+                    <Label text="Semestre" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                    <ComboBox fx:id="cbxSemestre" maxWidth="Infinity"
+                              style="-fx-pref-height: 34px;"/>
+                </VBox>
+
+                <VBox spacing="4" HBox.hgrow="ALWAYS">
+                    <Label text="Programa" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                    <ComboBox fx:id="cbxPrograma" maxWidth="Infinity"
+                              style="-fx-pref-height: 34px;"/>
+                </VBox>
+
+                <VBox spacing="4" HBox.hgrow="ALWAYS">
+                    <Label text="Ciudad" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                    <ComboBox fx:id="cbxCiudad" maxWidth="Infinity"
+                              style="-fx-pref-height: 34px;"/>
+                </VBox>
+
+                <VBox spacing="4" alignment="BOTTOM_LEFT">
+                    <Label text=" "/>
+                    <HBox spacing="8">
+                        <Button fx:id="btnGenerar" text="Generar"  onAction="#onGenerar"
+                                style="-fx-background-color: #1a2a6c; -fx-text-fill: white; -fx-pref-height: 34px; -fx-pref-width: 95px; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                        <Button fx:id="btnGuardar" text="Guardar PDF" onAction="#onGuardar"
+                                style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-pref-height: 34px; -fx-pref-width: 105px; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                        <Button fx:id="btnLimpiar" text="Limpiar"  onAction="#onLimpiar"
+                                style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-pref-height: 34px; -fx-pref-width: 80px; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                    </HBox>
+                </VBox>
+            </HBox>
+
+            <!-- Vista previa del informe -->
+            <VBox VBox.vgrow="ALWAYS" spacing="6">
+                <Label text="Vista previa del informe generado"
+                       style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #1a2a6c;"/>
+                <TextArea fx:id="txtInforme"
+                          promptText="Aquí aparecerá el informe generado por Gemini IA..."
+                          wrapText="true" editable="false"
+                          VBox.vgrow="ALWAYS"
+                          style="-fx-font-size: 13px; -fx-font-family: 'Segoe UI'; -fx-background-color: white; -fx-border-color: #ddd; -fx-border-radius: 8; -fx-background-radius: 8;"/>
+            </VBox>
+
+        </VBox>
+    </center>
+</BorderPane>
