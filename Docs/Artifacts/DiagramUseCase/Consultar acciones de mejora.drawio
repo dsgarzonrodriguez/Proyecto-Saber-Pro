@@ -1,6 +1,6 @@
 <mxfile host="Electron">
   <diagram name="Página-1" id="rM9PUSU3Cms5Tzq5qycG">
-    <mxGraphModel dx="1518" dy="832" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2241" dy="841" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -13,7 +13,7 @@
         <mxCell id="Rz3i4WrJuDKpF1sD5oG9-2" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Consultar accionesa de mejora" vertex="1">
           <mxGeometry height="70" width="110" x="160" y="320" as="geometry" />
         </mxCell>
-        <mxCell id="Rz3i4WrJuDKpF1sD5oG9-3" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="Coordinador" vertex="1">
+        <mxCell id="Rz3i4WrJuDKpF1sD5oG9-3" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="Personal Universitario" vertex="1">
           <mxGeometry height="60" width="30" y="325" as="geometry" />
         </mxCell>
         <mxCell id="Rz3i4WrJuDKpF1sD5oG9-4" edge="1" parent="1" source="Rz3i4WrJuDKpF1sD5oG9-3" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="Rz3i4WrJuDKpF1sD5oG9-2" value="">
